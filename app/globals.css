@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   VELMONT ESTATES — DESIGN SYSTEM
+   Cinematic luxury real estate. Warm ink, italian marble, bronze.
+   ============================================================ */
+
+:root {
+  --ink: #0a0a0b;
+  --ink-soft: #111113;
+  --marble: #f4f1ea;
+  --marble-2: #e8e2d6;
+  --bronze: #b08d57;
+  --bronze-light: #c9a877;
+  --bronze-dark: #8a6d3f;
+  --stone: #8a8578;
+
+  --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-luxe-in: cubic-bezier(0.7, 0, 0.84, 0);
+
+  --nav-h: 88px;
+
+  color-scheme: dark;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis owns scrolling */
+  background: var(--ink);
+}
+
+body {
+  background: var(--ink);
+  color: var(--marble);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  font-feature-settings: "kern", "liga", "ss01";
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Selection */
+::selection {
+  background: var(--bronze);
+  color: var(--ink);
+}
+
+/* Custom scrollbar (subtle) */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* ------------------------------------------------------------
+   Typography helpers
+   ------------------------------------------------------------ */
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.display {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+}
+
+.eyebrow {
+  font-family: var(--font-sans), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.body-lux {
+  font-weight: 300;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+/* Fluid display sizes */
+.t-hero {
+  font-size: clamp(3.2rem, 11vw, 12rem);
+}
+.t-h1 {
+  font-size: clamp(2.6rem, 7vw, 7rem);
+}
+.t-h2 {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+}
+.t-h3 {
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+/* ------------------------------------------------------------
+   Materials — glass, grain, gradients, hairlines
+   ------------------------------------------------------------ */
+.glass {
+  background: rgba(20, 20, 22, 0.5);
+  backdrop-filter: blur(14px) saturate(115%);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass-light {
+  background: rgba(250, 248, 243, 0.55);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  border: 1px solid rgba(10, 10, 11, 0.06);
+}
+
+.hairline {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.hairline-dark {
+  border-color: rgba(10, 10, 11, 0.12);
+}
+
+/* Bronze text accent */
+.bronze-text {
+  color: var(--bronze-light);
+}
+.bronze-gradient-text {
+  background: linear-gradient(100deg, #8a6d3f 0%, #d8b985 45%, #c9a877 60%, #8a6d3f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Film grain overlay — sits above everything, ignores pointer */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -15%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-move 8s steps(6) infinite;
+}
+@keyframes grain-move {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -2%); }
+  80% { transform: translate(3%, 1%); }
+}
+
+/* Vignette utility */
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 100% at 50% 40%, transparent 45%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* Section theming */
+.theme-dark {
+  background: var(--ink);
+  color: var(--marble);
+}
+.theme-ink-soft {
+  background: var(--ink-soft);
+  color: var(--marble);
+}
+.theme-light {
+  background: var(--marble);
+  color: var(--ink);
+}
+/* Darker bronze on marble so eyebrows clear AA contrast (>=4.5:1). */
+.theme-light .eyebrow { color: #6b5322; }
+
+/* ------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------ */
+.btn-lux {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.05rem 2.4rem;
+  font-family: var(--font-sans), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border: 1px solid rgba(176, 141, 87, 0.5);
+  color: var(--marble);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: color 0.6s var(--ease-luxe), border-color 0.6s var(--ease-luxe);
+  isolation: isolate;
+}
+.btn-lux::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, var(--bronze-dark, #8a6d3f), var(--bronze-light));
+  transform: translateY(101%);
+  transition: transform 0.6s var(--ease-luxe);
+}
+.btn-lux:hover {
+  color: var(--ink);
+  border-color: var(--bronze-light);
+}
+.btn-lux:hover::before {
+  transform: translateY(0);
+}
+.btn-lux.on-light {
+  color: var(--ink);
+}
+.btn-lux.on-light:hover {
+  color: var(--marble);
+}
+
+/* Link with animated underline */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.55s var(--ease-luxe);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ------------------------------------------------------------
+   Utilities
+   ------------------------------------------------------------ */
+.will-reveal {
+  will-change: transform, opacity;
+}
+
+.mask-fade-b {
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.edge-x {
+  padding-left: clamp(1.25rem, 6vw, 8rem);
+  padding-right: clamp(1.25rem, 6vw, 8rem);
+}
+
+.noise-card {
+  background-image:
+    linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0) 40%),
+    radial-gradient(140% 120% at 0% 0%, rgba(176,141,87,0.10), transparent 55%);
+}
+
+/* Hide focus ring for mouse users, keep for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid var(--bronze-light);
+  outline-offset: 3px;
+}
+/* On marble surfaces bronze-light is too faint — use ink for a >=3:1 ring. */
+.theme-light :focus-visible {
+  outline-color: var(--ink);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .grain::after { animation: none; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

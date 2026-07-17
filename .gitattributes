@@ -1,0 +1,5 @@
+# Normalize line endings: store LF in the repo, check out native on each OS.
+* text=auto eol=lf
+
+# Treat the mansion film as binary (no diff/eol munging).
+*.mp4 binary
