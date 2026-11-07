@@ -1,6 +1,6 @@
 // ============================================================
 // VELMONT ESTATES — Content model
-// A fictional ultra-luxury developer. Demo content only.
+// Ultra-luxury real-estate developer.
 // ============================================================
 
 const U = (id: string, w = 1600, q = 80) =>

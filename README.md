@@ -5,8 +5,7 @@ pre-produced mansion film. The visitor doesn't browse pages — they watch a res
 come to life, cross an almost-invisible threshold from film into website, and then
 walk the house room by room.
 
-> This is a **demo experience only**. No backend, auth, payments, database, CMS, or
-> live listings — every interaction is visual, immersive, and cinematic.
+> A cinematic, front-end experience — every interaction is visual, immersive, and film-driven.
 
 ---
 
@@ -59,7 +58,7 @@ app/            layout, page composition, globals
 components/      hero, nav, preloader, floor indicator, smooth-scroll
   sections/      the 12 rooms
   ui/            reusable motion primitives
-data/site.ts     all content (demo)
+data/site.ts     all content
 public/videos/   mansion-tour.mp4  (the pre-produced film)
 lib/anim.ts      shared easing + variants
 ```
@@ -84,4 +83,4 @@ supplied and is the centre of the entire experience — the site is designed aro
 
 ---
 
-© Velmont Estates — a fictional developer. Crafted as a demo.
+© Velmont Estates
