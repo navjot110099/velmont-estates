@@ -28,7 +28,7 @@ export default function Home() {
       <Navigation />
       <FloorIndicator />
 
-      <main className="relative">
+      <main id="main" tabIndex={-1} className="relative outline-none">
         {/* The film → the threshold */}
         <CinematicHero />
 

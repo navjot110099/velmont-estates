@@ -8,7 +8,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import { useSmoothScroll } from "@/components/SmoothScroll";
 import { brand, contact, nav, properties } from "@/data/site";
 
-// Placeholder footer navigation — real anchors handled via scrollTo / "#".
+// Footer navigation — anchors handled via scrollTo / "#".
 const companyLinks = ["Our Atelier", "The Journal", "Careers", "Press"];
 const legalLinks = ["Privacy Policy", "Terms of Engagement", "Cookie Preferences"];
 

@@ -48,8 +48,13 @@ export default function Preloader() {
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink"
           exit={{ y: "-100%" }}
           transition={{ duration: 1.1, ease: EASE }}
+          role="status"
+          aria-label={`Loading ${brand.name}`}
         >
+          {/* Decorative lockup — hidden from assistive tech so it doesn't
+              announce a second "VELMONT" heading over the hero's real <h1>. */}
           <motion.div
+            aria-hidden
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: EASE }}
@@ -58,13 +63,13 @@ export default function Preloader() {
             {/* Lockup mirrors CinematicHero so the curtain-lift is a match-cut,
                 not a reshuffle: city eyebrow above, tagline serif-italic below. */}
             <span className="eyebrow mb-8 text-marble/80">{brand.city}</span>
-            <h1 className="display t-hero text-marble">VELMONT</h1>
+            <span className="display t-hero block text-marble">VELMONT</span>
             <p className="mt-4 font-serif text-2xl italic text-marble/70 md:text-3xl">
               {brand.tagline}
             </p>
           </motion.div>
 
-          <div className="absolute bottom-16 left-0 right-0 px-8">
+          <div aria-hidden className="absolute bottom-16 left-0 right-0 px-8">
             <div className="mx-auto flex max-w-6xl items-end justify-between">
               <span className="eyebrow text-[0.6rem] text-marble/50">
                 Composing the experience
